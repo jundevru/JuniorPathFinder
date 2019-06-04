@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace JuniorPathFinderCore
 {
-    public class Class1
+    class RegionItem
     {
+
+
+
+
     }
 }
