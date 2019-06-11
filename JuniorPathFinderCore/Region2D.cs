@@ -4,16 +4,10 @@
 // 1
 // 0  1  2           ...   xScale-1
 
-
-using System;
 using System.Collections.Generic;
 using JuniorPathFinderCore.Collections;
 using JuniorPathFinderCore.Comparers;
 using JuniorPathFinderCore.Heuristics;
-
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace JuniorPathFinderCore
 {
@@ -141,6 +135,21 @@ namespace JuniorPathFinderCore
             return path;
         }
 
+        public Layers GetLayer(Vector2i localPosition)
+        {
+            RegionItem item = GetItem(localPosition);
+            if (item == null)
+                throw new System.IndexOutOfRangeException("Координата не принадлежит области");
+            return item.Layer;
+        }
+        public bool SetLayer(Vector2i localPosition, Layers layer)
+        {
+            RegionItem item = GetItem(localPosition);
+            if (item == null)
+                return false;
+            item.SetLayer(layer);
+            return true;
+        }
 
         private RegionPath RetracePath(RegionItem end)
         {
