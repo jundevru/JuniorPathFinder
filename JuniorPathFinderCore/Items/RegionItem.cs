@@ -5,24 +5,19 @@ using System;
 namespace JuniorPathFinderCore
 {
     [Serializable]
-    class RegionItem
+    public class RegionItem
     {
+        private byte xLocalCoordinate;
+        private byte yLocalCoordinate;
+        private byte zLocalCoordinate;
+        private Layers layer;
+
+        public Layers Layer => layer;
+
         /// <summary>
-        /// X local horizontal coordinate
+        /// Local point coordinate in region
         /// </summary>
-        public byte xLocalCoordinate;
-        /// <summary>
-        /// Y or Z local horizontal coordinate
-        /// </summary>
-        public byte xxLocalCoordinate;
-        /// <summary>
-        /// Y or Z local vertical coordinate
-        /// </summary>
-        public int hLocalCoordinate;
-        /// <summary>
-        /// Layer
-        /// </summary>
-        public Layers layer;
+        public Vector3i LocalCoordinate => new Vector3i(xLocalCoordinate, yLocalCoordinate, zLocalCoordinate);
 
         [NonSerialized]
         public RegionItem parent = null;
@@ -30,23 +25,25 @@ namespace JuniorPathFinderCore
         public byte opened = 0;
         [NonSerialized]
         public byte closed = 0;
+
         [NonSerialized]
         public int g = 0;
+
         [NonSerialized]
         public double f = 0;
 
         /// <summary>
         /// Ctor
         /// </summary>
-        /// <param name="x">X horizontal coordinate</param>
-        /// <param name="xx">Y or Z horizontal coordinate</param>
-        /// <param name="h">Y or Z vertical coordinate)</param>
+        /// <param name="x">X horizontal local coordinate</param>
+        /// <param name="y">Y horizontal local coordinate</param>
+        /// <param name="z">Z vertical local coordinate)</param>
         /// <param name="layer">Layer number</param>
-        public RegionItem(byte x, byte xx, int h, Layers layer)
+        public RegionItem(byte x, byte y, byte z, Layers layer)
         {
             xLocalCoordinate = x;
-            xxLocalCoordinate = xx;
-            hLocalCoordinate = h;
+            yLocalCoordinate = y;
+            zLocalCoordinate = z;
             this.layer = layer;
         }
         /// <summary>
@@ -55,6 +52,12 @@ namespace JuniorPathFinderCore
         public RegionItem()
             :this(0,0,0, Layers.Layer0)
         { }
+
+        public void SetLayer(Layers layer)
+        {
+            this.layer = layer;
+        }
+        
 
     }
 }

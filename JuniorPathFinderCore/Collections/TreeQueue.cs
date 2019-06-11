@@ -12,9 +12,9 @@
 using System;
 using System.Collections.Generic;
 
-namespace ComplexPathFinder.Collections
+namespace JuniorPathFinderCore.Collections
 {
-    public class TreeQueue<T>
+    class TreeQueue<T>
     {
         #region Variables Declaration
         protected List<T> InnerList = new List<T>();
