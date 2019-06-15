@@ -1,8 +1,6 @@
-﻿using System;
+﻿// Интервейс сравнителей элементов области
+
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace JuniorPathFinderCore.Comparers
 {

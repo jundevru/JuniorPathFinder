@@ -4,7 +4,10 @@
 // 1
 // 0  1  2           ...   xScale-1
 
+using System;
+using System.IO;
 using System.Collections.Generic;
+using System.Runtime.Serialization.Formatters.Binary;
 using JuniorPathFinderCore.Collections;
 using JuniorPathFinderCore.Comparers;
 using JuniorPathFinderCore.Heuristics;
@@ -12,38 +15,20 @@ using JuniorPathFinderCore.Heuristics;
 namespace JuniorPathFinderCore
 {
 
-    public class Region2D
+    public class Region2D : Storage.IStorageObject
     {
-        public static readonly byte minScale = 2;
-        public static readonly byte maxScale = 255;
+        public static readonly byte minScale            = 2;
+        public static readonly byte maxScale            = 255;
+        private List<RegionItem>    grid                = new List<RegionItem>();
+        private byte                xScale;
+        private byte                yScale;
+        private Vector3i            position;
+        private byte                currentIteration    = 0;
+        
 
-        private List<RegionItem> grid = new List<RegionItem>();
-        private byte xScale;
-        private byte yScale;
-        private Vector3i position;
-
-        private byte currentIteration = 0;
-        private byte IncrementCurrentIteration
-        {
-            get
-            {
-                if (currentIteration == 255)
-                {
-                    currentIteration = 1;
-                    for (int i = 0; i < grid.Count; i++)
-                    {
-                        grid[i].closed = 0;
-                        grid[i].opened = 0;
-                    }
-                }
-                else currentIteration++;
-                return currentIteration;
-            }
-        }
-
-        public Vector3i Position => position;
-        public byte ScaleX => xScale;
-        public byte ScaleY => yScale;
+        public Vector3i Position    =>  position;
+        public byte ScaleX          =>  xScale;
+        public byte ScaleY          =>  yScale;
 
         public Region2D(Vector3i position, byte xScale, byte yScale, Layers defaultLayer = Layers.Layer0)
         {
@@ -135,6 +120,12 @@ namespace JuniorPathFinderCore
             return path;
         }
 
+        #region Get Set point layer
+        /// <summary>
+        /// Возвращает слой по локальным координатам
+        /// </summary>
+        /// <param name="localPosition"></param>
+        /// <returns></returns>
         public Layers GetLayer(Vector2i localPosition)
         {
             RegionItem item = GetItem(localPosition);
@@ -142,15 +133,21 @@ namespace JuniorPathFinderCore
                 throw new System.IndexOutOfRangeException("Координата не принадлежит области");
             return item.Layer;
         }
-        public bool SetLayer(Vector2i localPosition, Layers layer)
+        /// <summary>
+        /// Задает слой по локальным координатам
+        /// </summary>
+        /// <param name="localPosition"></param>
+        /// <param name="layer"></param>
+        public void SetLayer(Vector2i localPosition, Layers layer)
         {
             RegionItem item = GetItem(localPosition);
             if (item == null)
-                return false;
+                throw new System.IndexOutOfRangeException("Координата не принадлежит области");
             item.SetLayer(layer);
-            return true;
         }
+        #endregion
 
+        #region private metods
         private RegionPath RetracePath(RegionItem end)
         {
             RegionPath path = new RegionPath();
@@ -166,7 +163,6 @@ namespace JuniorPathFinderCore
                 path.Add(new PathItem(Position + i.LocalCoordinate, i.Layer));
             return path;
         }
-
         private RegionItem GetItem(Vector2i local)
         {
             int index = xScale * local.y + local.x;
@@ -174,7 +170,54 @@ namespace JuniorPathFinderCore
                 return null;
             return grid[index];
         }
+        private byte IncrementCurrentIteration
+        {
+            get
+            {
+                if (currentIteration == 255)
+                {
+                    currentIteration = 1;
+                    for (int i = 0; i < grid.Count; i++)
+                    {
+                        grid[i].closed = 0;
+                        grid[i].opened = 0;
+                    }
+                }
+                else currentIteration++;
+                return currentIteration;
+            }
+        }
+        #endregion
 
-
+        #region IStorageObject
+        /// <summary>
+        /// Возвращает область в виде массива байтов
+        /// </summary>
+        /// <returns></returns>
+        public byte[] GetBytes()
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            MemoryStream ms = new MemoryStream();
+            bf.Serialize(ms, grid);
+            bf.Serialize(ms, xScale);
+            bf.Serialize(ms, yScale);
+            bf.Serialize(ms, position);
+            return ms.ToArray();
+        }
+        /// <summary>
+        /// Восстанавливает область из массива байтов
+        /// </summary>
+        /// <param name="data"></param>
+        public void SetBytes(byte[] data)
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            MemoryStream ms = new MemoryStream(data);
+            grid = (List<RegionItem>)bf.Deserialize(ms);
+            xScale = (byte)bf.Deserialize(ms);
+            yScale = (byte)bf.Deserialize(ms);
+            position = (Vector3i)bf.Deserialize(ms);
+            ms.Close();
+        }
+        #endregion
     }
 }

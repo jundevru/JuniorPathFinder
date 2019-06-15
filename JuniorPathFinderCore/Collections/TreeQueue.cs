@@ -17,8 +17,8 @@ namespace JuniorPathFinderCore.Collections
     class TreeQueue<T>
     {
         #region Variables Declaration
-        protected List<T> InnerList = new List<T>();
-        protected IComparer<T> mComparer;
+        protected List<T>       InnerList   =   new List<T>();
+        protected IComparer<T>  mComparer;
         #endregion
 
         #region Contructors

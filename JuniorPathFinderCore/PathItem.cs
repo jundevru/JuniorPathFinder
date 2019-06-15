@@ -1,14 +1,14 @@
-﻿// Path Item
+﻿// Элемент найденного пути
 
 namespace JuniorPathFinderCore
 {
     public class PathItem
     {
-        private Vector3i point;
-        private Layers layer;
+        private Vector3i    point;
+        private Layers      layer;
 
-        public Vector3i Point => point;
-        public Layers Layer => layer;
+        public Vector3i     Point   =>  point;
+        public Layers       Layer   =>  layer;
 
         public PathItem(Vector3i point, Layers layer)
         {

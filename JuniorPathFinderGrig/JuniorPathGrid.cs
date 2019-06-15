@@ -15,6 +15,11 @@ namespace JuniorPathFinderGrig
     {
 
         #region Данные отображаемой области
+        private Region2D    region  = null;
+        private RegionPath  path    = null;
+        /// <summary>
+        /// Задает отображаемую карту и перерисовывает ее
+        /// </summary>
         public Region2D Map
         {
             get { return region; }
@@ -23,14 +28,28 @@ namespace JuniorPathFinderGrig
                 region = value;
                 this.Invalidate();
             }
+        }      
+        /// <summary>
+        /// Задает отображаемый путь и перерисовывает карту
+        /// </summary>
+        public RegionPath Path
+        {
+            get { return path; }
+            set
+            {
+                path = value;
+                this.Invalidate();
+            }
         }
-        private Region2D region = null;
         #endregion
 
         #region Данные сетки
-        int cellSize = 10;
-        private Point start = Point.Empty;
-        private Point end = Point.Empty;
+        int             cellSize    = 22;
+        private Point   start       = Point.Empty;
+        private Point   end         = Point.Empty;
+
+        public Vector2i StartPosition   => new Vector2i(start.X, start.Y);
+        public Vector2i EndPosition     => new Vector2i(end.X, end.Y);
         #endregion
 
         #region Рисование
@@ -40,8 +59,8 @@ namespace JuniorPathFinderGrig
             End,
             Layer
         }
-        public Mode DrawMode = Mode.Layer;
-        public Layers DrawLayer = Layers.Layer0;
+        public Mode     DrawMode    = Mode.Layer;
+        public Layers   DrawLayer   = Layers.Layer0;
         #endregion
 
 
@@ -95,6 +114,9 @@ namespace JuniorPathFinderGrig
                     g.DrawLine(pen, x, e.ClipRectangle.Y, x, e.ClipRectangle.Bottom);
             }
 
+            if (path != null)
+                DrawPath();
+
             base.OnPaint(e);
         }
         protected override void OnMouseMove(MouseEventArgs e)
@@ -133,7 +155,15 @@ namespace JuniorPathFinderGrig
         }
         #endregion
 
-        public void DrawPath(RegionPath path)
+        /// <summary>
+        /// Перерисовывает карту
+        /// </summary>
+        public void UpdateMap()
+        {
+            this.Invalidate();
+        }
+
+        private void DrawPath()
         {
             if (path == null || path.Count == 0) return;
             try
@@ -144,12 +174,13 @@ namespace JuniorPathFinderGrig
                     Rectangle internalRec;
                     foreach(PathItem item in path)
                     {
-                        internalRec = new Rectangle((item.Point.x * cellSize) + 2, (item.Point.y * cellSize) + 2, cellSize - 4, cellSize - 4);
-                        using (Brush brush = new SolidBrush(Color.White))
-                            g.FillRectangle(brush, internalRec);
+                        //Rectangle view = (RectangleF)g.ClipBounds;
+                        internalRec = new Rectangle((item.Point.x * cellSize), (item.Point.y * cellSize), cellSize, cellSize);
+                        using (Brush brush = new SolidBrush(Color.Gray))
+                            g.FillEllipse(brush, internalRec);
                         g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-                        using (Font f = new System.Drawing.Font("Verdana", 0.25F * cellSize, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))))
-                            g.DrawString(item.Layer.ToString(), f, Brushes.Black, (RectangleF)internalRec);
+                        using (Font f = new System.Drawing.Font("Verdana", 0.35F * cellSize, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))))
+                            g.DrawString(((int)item.Layer).ToString(), f, Brushes.Black, (RectangleF)internalRec);
                     }
                 }
                 catch (Exception) { }

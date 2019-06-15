@@ -1,4 +1,4 @@
-﻿// Layer mask
+﻿// Маска слоев, аналог в Unity
 namespace JuniorPathFinderCore
 {
     public sealed class LayerMask
@@ -6,58 +6,46 @@ namespace JuniorPathFinderCore
         public static readonly LayerMask Empty = new LayerMask();
 
         int value = 0;
+        /// <summary>
+        /// Get value
+        /// </summary>
+        public int Value => value;
 
         public LayerMask() { value = 0; }
 
         /// <summary>
-        /// Get value
-        /// </summary>
-        public int Value { get { return value; } }
-
-        /// <summary>
-        /// Check the entry of a layer in the mask
+        /// Проверяет вхождение слоя в маску
         /// </summary>
         /// <param name="layer"></param>
         /// <returns></returns>
         public bool Contains(Layers layer)
         {
-            return !((value & (1 << (int)layer)) == 0);
+            return ((value & (1 << (int)layer)) != 0);
         }
 
         /// <summary>
-        /// Add layer to mask
+        /// Добавляет слой в маску
         /// </summary>
         /// <param name="layer"></param>
         /// <returns></returns>
         public bool Add(Layers layer)
         {
-            if (Contains(layer)) return false;
+            if (Contains(layer))
+                return false;
             value = value | (1 << (int)layer);
             return true;
         }
 
         /// <summary>
-        /// Remove Layer from mask
+        /// Удаляет слой из маски
         /// </summary>
         /// <param name="layer"></param>
         /// <returns></returns>
         public bool Remove(Layers layer)
         {
             if (!Contains(layer)) return false;
-            value = value ^ (int)layer;
+            value = value ^ (1 << (int)layer);
             return true;
         }
-
-        /*
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="other"></param>
-        /// <returns></returns>
-        public bool Equals(LayerMask other)
-        {
-            return (this.value == other.Value);
-        }
-        */
     }
 }

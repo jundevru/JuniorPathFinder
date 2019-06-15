@@ -1,4 +1,4 @@
-﻿// Optimal path comparer
+﻿// Оптимальный поиск пути - сравнитель
 
 namespace JuniorPathFinderCore.Comparers
 {
@@ -6,9 +6,9 @@ namespace JuniorPathFinderCore.Comparers
     {
         public int Compare(RegionItem x, RegionItem y)
         {
-            if (x.f > y.f)
+            if (x.g + x.f > y.g + y.f)
                 return 1;
-            else if (x.f < y.f)
+            else if (x.g + x.f < y.g + y.f)
                 return -1;
             return 0;
         }
