@@ -249,18 +249,18 @@
             this.lb0.AutoSize = true;
             this.lb0.Location = new System.Drawing.Point(6, 37);
             this.lb0.Name = "lb0";
-            this.lb0.Size = new System.Drawing.Size(41, 13);
+            this.lb0.Size = new System.Drawing.Size(47, 13);
             this.lb0.TabIndex = 0;
-            this.lb0.Text = "Слой 0";
+            this.lb0.Text = "Слой 0  ";
             // 
             // lb7
             // 
             this.lb7.AutoSize = true;
             this.lb7.Location = new System.Drawing.Point(6, 54);
             this.lb7.Name = "lb7";
-            this.lb7.Size = new System.Drawing.Size(41, 13);
+            this.lb7.Size = new System.Drawing.Size(47, 13);
             this.lb7.TabIndex = 1;
-            this.lb7.Text = "Слой 7";
+            this.lb7.Text = "Слой 7  ";
             // 
             // lb13
             // 
@@ -446,9 +446,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(99, 16);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(81, 13);
+            this.label4.Size = new System.Drawing.Size(58, 13);
             this.label4.TabIndex = 19;
-            this.label4.Text = "Проходимость";
+            this.label4.Text = "Проходим";
             // 
             // btFind
             // 
@@ -470,7 +470,7 @@
             this.pfGrid.Map = null;
             this.pfGrid.Name = "pfGrid";
             this.pfGrid.Path = null;
-            this.pfGrid.Size = new System.Drawing.Size(798, 564);
+            this.pfGrid.Size = new System.Drawing.Size(740, 564);
             this.pfGrid.TabIndex = 0;
             // 
             // Form1

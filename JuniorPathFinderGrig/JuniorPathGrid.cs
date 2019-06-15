@@ -102,18 +102,37 @@ namespace JuniorPathFinderGrig
                         }
                         catch (Exception) { }
                     }
+                Color c = Color.Black;
+                using (Pen pen = new Pen(c))
+                {
+                    int yView = e.ClipRectangle.Height / cellSize;
+                    int xView = e.ClipRectangle.Width / cellSize;
+                    int yDraw = (yView > region.ScaleY) ? e.ClipRectangle.Y + region.ScaleY * cellSize : e.ClipRectangle.Bottom;
+                    int xDraw = (xView > region.ScaleX) ? e.ClipRectangle.X + region.ScaleX * cellSize : e.ClipRectangle.Right;
+                    int yToDraw = (yView > region.ScaleY) ? e.ClipRectangle.Y + region.ScaleY * cellSize : e.ClipRectangle.Bottom;
+                    int xToDraw = (xView > region.ScaleX) ? e.ClipRectangle.X + region.ScaleX * cellSize : e.ClipRectangle.Right;
+
+                    for (int y = (e.ClipRectangle.Y / cellSize) * cellSize; y <= yDraw; y += cellSize)
+                        g.DrawLine(pen, e.ClipRectangle.X, y, xToDraw, y);
+
+                    for (int x = (e.ClipRectangle.X / cellSize) * cellSize; x <= xDraw; x += cellSize)
+                        g.DrawLine(pen, x, e.ClipRectangle.Y, x, yToDraw);
+                }
             }
-            // Рисуем собственно сетку
-            Color c = Color.Black;
-            using (Pen pen = new Pen(c))
+            else
             {
-                for (int y = (e.ClipRectangle.Y / cellSize) * cellSize; y <= e.ClipRectangle.Bottom; y += cellSize)
-                    g.DrawLine(pen, e.ClipRectangle.X, y, e.ClipRectangle.Right, y);
+                Color c = Color.Black;
+                using (Pen pen = new Pen(c))
+                {
+                    for (int y = (e.ClipRectangle.Y / cellSize) * cellSize; y <= e.ClipRectangle.Bottom; y += cellSize)
+                        g.DrawLine(pen, e.ClipRectangle.X, y, e.ClipRectangle.Right, y);
 
-                for (int x = (e.ClipRectangle.X / cellSize) * cellSize; x <= e.ClipRectangle.Right; x += cellSize)
-                    g.DrawLine(pen, x, e.ClipRectangle.Y, x, e.ClipRectangle.Bottom);
+                    for (int x = (e.ClipRectangle.X / cellSize) * cellSize; x <= e.ClipRectangle.Right; x += cellSize)
+                        g.DrawLine(pen, x, e.ClipRectangle.Y, x, e.ClipRectangle.Bottom);
+                }
             }
 
+            
             if (path != null)
                 DrawPath();
 

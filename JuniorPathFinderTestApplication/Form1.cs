@@ -82,8 +82,12 @@ namespace JuniorPathFinderTestApplication
                 }
                 pfGrid.UpdateMap();
             };
+            this.ResizeEnd += (s, e) => {
+                pfGrid.UpdateMap();
+            };
             #endregion
         }
+      
         // Выбор режима рисования
         private void rbStart_CheckedChanged(object sender, EventArgs e)
         {
