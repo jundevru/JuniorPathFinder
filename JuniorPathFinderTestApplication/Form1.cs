@@ -15,9 +15,11 @@ namespace JuniorPathFinderTestApplication
     public partial class Form1 : Form
     {
 
-        private LayerMask walcable = new LayerMask();
-        private LayersValues weights = new LayersValues();
-        string curDir = System.Environment.CurrentDirectory.TrimEnd("\\"[0]);
+        private LayerMask                                       walcable    =   new LayerMask();
+        private LayerMask                                       priority    =   new LayerMask();
+        private LayersValues                                    weights     =   new LayersValues();
+        JuniorPathFinderCore.Comparers.IRegion2DItemComparer    comparer    =   new JuniorPathFinderCore.Comparers.OptimalRegion2DItemsComparer();
+        private string                                          curDir      =   System.Environment.CurrentDirectory.TrimEnd("\\"[0]);
 
         public Form1()
         {
@@ -34,12 +36,12 @@ namespace JuniorPathFinderTestApplication
             #region Инициализация элементов PathFinder
             Region2D region = new Region2D(Vector3i.zero, 20, 20, Layers.Layer0);
             pfGrid.Map = region;
-            weights.AddValue(Layers.Layer0, 1);
+            weights.AddValue(Layers.Layer0, 4);
             weights.AddValue(Layers.Layer7, 8);
-            weights.AddValue(Layers.Layer13, 14);
-            weights.AddValue(Layers.Layer17, 18);
-            weights.AddValue(Layers.Layer20, 21);
-            weights.AddValue(Layers.Layer25, 26);
+            weights.AddValue(Layers.Layer13, 12);
+            weights.AddValue(Layers.Layer17, 16);
+            weights.AddValue(Layers.Layer20, 20);
+            weights.AddValue(Layers.Layer25, 24);
             #endregion
 
             #region События
@@ -82,7 +84,7 @@ namespace JuniorPathFinderTestApplication
                 }
                 pfGrid.UpdateMap();
             };
-            this.ResizeEnd += (s, e) => {
+            ResizeEnd += (s, e) => {
                 pfGrid.UpdateMap();
             };
             #endregion
@@ -100,7 +102,7 @@ namespace JuniorPathFinderTestApplication
             RadioButton rb = (RadioButton)sender;
             pfGrid.DrawLayer = (Layers)Convert.ToInt32(rb.Tag);
         }
-        // Задать проходимость ячеек
+        // Задать проходимые ячейки
         private void cbWalkable_CheckedChanged(object sender, EventArgs e)
         {
             CheckBox cb = (CheckBox)sender;
@@ -108,26 +110,45 @@ namespace JuniorPathFinderTestApplication
             if (cb.Checked)
             {
                 walcable.Add(layer);
-                if (!walcable.Contains(layer))
-                {
-                    MessageBox.Show("Error");
-                }
             }
             else
             {
                 walcable.Remove(layer);
-                if (walcable.Contains(layer))
-                {
-                    MessageBox.Show("Error");
-                }
+            }
+        }
+        // Задать приоритетные ячейки
+        private void cbPriority_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox cb = (CheckBox)sender;
+            Layers layer = (Layers)Convert.ToInt32(cb.Tag);
+            if (cb.Checked)
+            {
+                priority.Add(layer);
+            }
+            else
+            {
+                priority.Remove(layer);
+            }
+        }
+        // Выбор типа поиска
+        private void rbPriority_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton rb = (RadioButton)sender;
+            switch(Convert.ToInt32(rb.Tag))
+            {
+                case 0:
+                    comparer = new JuniorPathFinderCore.Comparers.OptimalRegion2DItemsComparer();
+                    break;
+                case 1:
+                    comparer = new JuniorPathFinderCore.Comparers.ShortestRegion2DItemsComparer();
+                    break;
             }
         }
         // Поиск пути в потоке GUI
         private void btFind_Click(object sender, EventArgs e)
         {
-            JuniorPathFinderCore.Comparers.IRegion2DItemComparer comparer = new JuniorPathFinderCore.Comparers.OptimalRegion2DItemsComparer();
             JuniorPathFinderCore.Heuristics.IHeuristic2D heuristic = new JuniorPathFinderCore.Heuristics.Manhatan2D();
-            RegionPath path = pfGrid.Map.GetPath(pfGrid.StartPosition, pfGrid.EndPosition, comparer, heuristic, walcable, weights);
+            RegionPath path = pfGrid.Map.GetPath(pfGrid.StartPosition, pfGrid.EndPosition, comparer, heuristic, walcable, weights, priority);
             if (path == null)
             {
                 MessageBox.Show("Путь не найден");
@@ -135,5 +156,7 @@ namespace JuniorPathFinderTestApplication
             }
             pfGrid.Path = path;
         }
+
+
     }
 }

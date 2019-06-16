@@ -41,8 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Collections\MyTreeQueue.cs" />
     <Compile Include="Comparers\IRegion2DItemComparer.cs" />
+    <Compile Include="Comparers\ShortestRegion2DItemsComparer.cs" />
     <Compile Include="Comparers\OptimalRegion2DItemsComparer.cs" />
+    <Compile Include="Heuristics\Euclidean2D.cs" />
     <Compile Include="Heuristics\IHeuristic2D.cs" />
     <Compile Include="Heuristics\Manhatan2D.cs" />
     <Compile Include="Layers\LayersValues.cs" />
@@ -51,7 +54,6 @@
     <Compile Include="PathItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Items\RegionItem.cs" />
-    <Compile Include="Collections\TreeQueue.cs" />
     <Compile Include="Region2D.cs" />
     <Compile Include="RegionPath.cs" />
     <Compile Include="Storage\IStorageObject.cs" />

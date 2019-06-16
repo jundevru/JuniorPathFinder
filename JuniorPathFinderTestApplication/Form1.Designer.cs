@@ -29,6 +29,28 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btFind = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.checkBox5 = new System.Windows.Forms.CheckBox();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.cbWalkable = new System.Windows.Forms.CheckBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.radioButton8 = new System.Windows.Forms.RadioButton();
+            this.radioButton7 = new System.Windows.Forms.RadioButton();
+            this.radioButton6 = new System.Windows.Forms.RadioButton();
+            this.radioButton5 = new System.Windows.Forms.RadioButton();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.rbLayer = new System.Windows.Forms.RadioButton();
+            this.lb25 = new System.Windows.Forms.Label();
+            this.lb20 = new System.Windows.Forms.Label();
+            this.lb17 = new System.Windows.Forms.Label();
+            this.lb13 = new System.Windows.Forms.Label();
+            this.lb7 = new System.Windows.Forms.Label();
+            this.lb0 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
@@ -41,39 +63,29 @@
             this.tbXSize = new System.Windows.Forms.TrackBar();
             this.btSave = new System.Windows.Forms.Button();
             this.btLoad = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.lb0 = new System.Windows.Forms.Label();
-            this.lb7 = new System.Windows.Forms.Label();
-            this.lb13 = new System.Windows.Forms.Label();
-            this.lb17 = new System.Windows.Forms.Label();
-            this.lb20 = new System.Windows.Forms.Label();
-            this.lb25 = new System.Windows.Forms.Label();
-            this.rbLayer = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
-            this.radioButton7 = new System.Windows.Forms.RadioButton();
-            this.radioButton8 = new System.Windows.Forms.RadioButton();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cbWalkable = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.btFind = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.checkBox6 = new System.Windows.Forms.CheckBox();
+            this.checkBox7 = new System.Windows.Forms.CheckBox();
+            this.checkBox8 = new System.Windows.Forms.CheckBox();
+            this.checkBox9 = new System.Windows.Forms.CheckBox();
+            this.checkBox10 = new System.Windows.Forms.CheckBox();
+            this.cbPriority = new System.Windows.Forms.CheckBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.rbPriority = new System.Windows.Forms.RadioButton();
+            this.radioButton9 = new System.Windows.Forms.RadioButton();
             this.pfGrid = new JuniorPathFinderGrig.JuniorPathGrid();
             this.panel1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbYsize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbXSize)).BeginInit();
-            this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.groupBox4);
             this.panel1.Controls.Add(this.btFind);
             this.panel1.Controls.Add(this.groupBox3);
             this.panel1.Controls.Add(this.groupBox2);
@@ -85,6 +97,259 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(270, 564);
             this.panel1.TabIndex = 1;
+            // 
+            // btFind
+            // 
+            this.btFind.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btFind.Location = new System.Drawing.Point(88, 476);
+            this.btFind.Name = "btFind";
+            this.btFind.Size = new System.Drawing.Size(95, 48);
+            this.btFind.TabIndex = 8;
+            this.btFind.Text = "Найти путь";
+            this.btFind.UseVisualStyleBackColor = true;
+            this.btFind.Click += new System.EventHandler(this.btFind_Click);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.label5);
+            this.groupBox3.Controls.Add(this.checkBox6);
+            this.groupBox3.Controls.Add(this.checkBox7);
+            this.groupBox3.Controls.Add(this.checkBox8);
+            this.groupBox3.Controls.Add(this.checkBox9);
+            this.groupBox3.Controls.Add(this.checkBox10);
+            this.groupBox3.Controls.Add(this.cbPriority);
+            this.groupBox3.Controls.Add(this.label4);
+            this.groupBox3.Controls.Add(this.checkBox5);
+            this.groupBox3.Controls.Add(this.checkBox4);
+            this.groupBox3.Controls.Add(this.checkBox3);
+            this.groupBox3.Controls.Add(this.checkBox2);
+            this.groupBox3.Controls.Add(this.checkBox1);
+            this.groupBox3.Controls.Add(this.cbWalkable);
+            this.groupBox3.Controls.Add(this.label3);
+            this.groupBox3.Controls.Add(this.radioButton8);
+            this.groupBox3.Controls.Add(this.radioButton7);
+            this.groupBox3.Controls.Add(this.radioButton6);
+            this.groupBox3.Controls.Add(this.radioButton5);
+            this.groupBox3.Controls.Add(this.radioButton4);
+            this.groupBox3.Controls.Add(this.rbLayer);
+            this.groupBox3.Controls.Add(this.lb25);
+            this.groupBox3.Controls.Add(this.lb20);
+            this.groupBox3.Controls.Add(this.lb17);
+            this.groupBox3.Controls.Add(this.lb13);
+            this.groupBox3.Controls.Add(this.lb7);
+            this.groupBox3.Controls.Add(this.lb0);
+            this.groupBox3.Location = new System.Drawing.Point(3, 176);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(264, 138);
+            this.groupBox3.TabIndex = 7;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Слои";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(99, 16);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(58, 13);
+            this.label4.TabIndex = 19;
+            this.label4.Text = "Проходим";
+            // 
+            // checkBox5
+            // 
+            this.checkBox5.AutoSize = true;
+            this.checkBox5.Location = new System.Drawing.Point(109, 117);
+            this.checkBox5.Name = "checkBox5";
+            this.checkBox5.Size = new System.Drawing.Size(15, 14);
+            this.checkBox5.TabIndex = 18;
+            this.checkBox5.Tag = "25";
+            this.checkBox5.UseVisualStyleBackColor = true;
+            this.checkBox5.CheckedChanged += new System.EventHandler(this.cbWalkable_CheckedChanged);
+            // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Location = new System.Drawing.Point(109, 101);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(15, 14);
+            this.checkBox4.TabIndex = 17;
+            this.checkBox4.Tag = "20";
+            this.checkBox4.UseVisualStyleBackColor = true;
+            this.checkBox4.CheckedChanged += new System.EventHandler(this.cbWalkable_CheckedChanged);
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(109, 86);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(15, 14);
+            this.checkBox3.TabIndex = 16;
+            this.checkBox3.Tag = "17";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            this.checkBox3.CheckedChanged += new System.EventHandler(this.cbWalkable_CheckedChanged);
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(109, 70);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(15, 14);
+            this.checkBox2.TabIndex = 15;
+            this.checkBox2.Tag = "13";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.cbWalkable_CheckedChanged);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(109, 53);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(15, 14);
+            this.checkBox1.TabIndex = 14;
+            this.checkBox1.Tag = "7";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.cbWalkable_CheckedChanged);
+            // 
+            // cbWalkable
+            // 
+            this.cbWalkable.AutoSize = true;
+            this.cbWalkable.Location = new System.Drawing.Point(109, 36);
+            this.cbWalkable.Name = "cbWalkable";
+            this.cbWalkable.Size = new System.Drawing.Size(15, 14);
+            this.cbWalkable.TabIndex = 13;
+            this.cbWalkable.Tag = "0";
+            this.cbWalkable.UseVisualStyleBackColor = true;
+            this.cbWalkable.CheckedChanged += new System.EventHandler(this.cbWalkable_CheckedChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(35, 16);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(58, 13);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Текеущий";
+            // 
+            // radioButton8
+            // 
+            this.radioButton8.AutoSize = true;
+            this.radioButton8.Location = new System.Drawing.Point(56, 118);
+            this.radioButton8.Name = "radioButton8";
+            this.radioButton8.Size = new System.Drawing.Size(14, 13);
+            this.radioButton8.TabIndex = 11;
+            this.radioButton8.Tag = "25";
+            this.radioButton8.UseVisualStyleBackColor = true;
+            this.radioButton8.CheckedChanged += new System.EventHandler(this.rbLayer_CheckedChanged);
+            // 
+            // radioButton7
+            // 
+            this.radioButton7.AutoSize = true;
+            this.radioButton7.Location = new System.Drawing.Point(56, 101);
+            this.radioButton7.Name = "radioButton7";
+            this.radioButton7.Size = new System.Drawing.Size(14, 13);
+            this.radioButton7.TabIndex = 10;
+            this.radioButton7.Tag = "20";
+            this.radioButton7.UseVisualStyleBackColor = true;
+            this.radioButton7.CheckedChanged += new System.EventHandler(this.rbLayer_CheckedChanged);
+            // 
+            // radioButton6
+            // 
+            this.radioButton6.AutoSize = true;
+            this.radioButton6.Location = new System.Drawing.Point(56, 86);
+            this.radioButton6.Name = "radioButton6";
+            this.radioButton6.Size = new System.Drawing.Size(14, 13);
+            this.radioButton6.TabIndex = 9;
+            this.radioButton6.Tag = "17";
+            this.radioButton6.UseVisualStyleBackColor = true;
+            this.radioButton6.CheckedChanged += new System.EventHandler(this.rbLayer_CheckedChanged);
+            // 
+            // radioButton5
+            // 
+            this.radioButton5.AutoSize = true;
+            this.radioButton5.Location = new System.Drawing.Point(56, 70);
+            this.radioButton5.Name = "radioButton5";
+            this.radioButton5.Size = new System.Drawing.Size(14, 13);
+            this.radioButton5.TabIndex = 8;
+            this.radioButton5.Tag = "13";
+            this.radioButton5.UseVisualStyleBackColor = true;
+            this.radioButton5.CheckedChanged += new System.EventHandler(this.rbLayer_CheckedChanged);
+            // 
+            // radioButton4
+            // 
+            this.radioButton4.AutoSize = true;
+            this.radioButton4.Location = new System.Drawing.Point(56, 54);
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.Size = new System.Drawing.Size(14, 13);
+            this.radioButton4.TabIndex = 7;
+            this.radioButton4.Tag = "7";
+            this.radioButton4.UseVisualStyleBackColor = true;
+            this.radioButton4.CheckedChanged += new System.EventHandler(this.rbLayer_CheckedChanged);
+            // 
+            // rbLayer
+            // 
+            this.rbLayer.AutoSize = true;
+            this.rbLayer.Checked = true;
+            this.rbLayer.Location = new System.Drawing.Point(56, 37);
+            this.rbLayer.Name = "rbLayer";
+            this.rbLayer.Size = new System.Drawing.Size(14, 13);
+            this.rbLayer.TabIndex = 6;
+            this.rbLayer.TabStop = true;
+            this.rbLayer.Tag = "0";
+            this.rbLayer.UseVisualStyleBackColor = true;
+            this.rbLayer.CheckedChanged += new System.EventHandler(this.rbLayer_CheckedChanged);
+            // 
+            // lb25
+            // 
+            this.lb25.AutoSize = true;
+            this.lb25.Location = new System.Drawing.Point(6, 118);
+            this.lb25.Name = "lb25";
+            this.lb25.Size = new System.Drawing.Size(47, 13);
+            this.lb25.TabIndex = 5;
+            this.lb25.Text = "Слой 25";
+            // 
+            // lb20
+            // 
+            this.lb20.AutoSize = true;
+            this.lb20.Location = new System.Drawing.Point(6, 101);
+            this.lb20.Name = "lb20";
+            this.lb20.Size = new System.Drawing.Size(47, 13);
+            this.lb20.TabIndex = 4;
+            this.lb20.Text = "Слой 20";
+            // 
+            // lb17
+            // 
+            this.lb17.AutoSize = true;
+            this.lb17.Location = new System.Drawing.Point(6, 86);
+            this.lb17.Name = "lb17";
+            this.lb17.Size = new System.Drawing.Size(47, 13);
+            this.lb17.TabIndex = 3;
+            this.lb17.Text = "Слой 17";
+            // 
+            // lb13
+            // 
+            this.lb13.AutoSize = true;
+            this.lb13.Location = new System.Drawing.Point(6, 70);
+            this.lb13.Name = "lb13";
+            this.lb13.Size = new System.Drawing.Size(47, 13);
+            this.lb13.TabIndex = 2;
+            this.lb13.Text = "Слой 13";
+            // 
+            // lb7
+            // 
+            this.lb7.AutoSize = true;
+            this.lb7.Location = new System.Drawing.Point(6, 54);
+            this.lb7.Name = "lb7";
+            this.lb7.Size = new System.Drawing.Size(47, 13);
+            this.lb7.TabIndex = 1;
+            this.lb7.Text = "Слой 7  ";
+            // 
+            // lb0
+            // 
+            this.lb0.AutoSize = true;
+            this.lb0.Location = new System.Drawing.Point(6, 37);
+            this.lb0.Name = "lb0";
+            this.lb0.Size = new System.Drawing.Size(47, 13);
+            this.lb0.TabIndex = 0;
+            this.lb0.Text = "Слой 0  ";
             // 
             // groupBox2
             // 
@@ -215,251 +480,117 @@
             this.btLoad.Text = "L";
             this.btLoad.UseVisualStyleBackColor = true;
             // 
-            // groupBox3
+            // label5
             // 
-            this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.checkBox5);
-            this.groupBox3.Controls.Add(this.checkBox4);
-            this.groupBox3.Controls.Add(this.checkBox3);
-            this.groupBox3.Controls.Add(this.checkBox2);
-            this.groupBox3.Controls.Add(this.checkBox1);
-            this.groupBox3.Controls.Add(this.cbWalkable);
-            this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Controls.Add(this.radioButton8);
-            this.groupBox3.Controls.Add(this.radioButton7);
-            this.groupBox3.Controls.Add(this.radioButton6);
-            this.groupBox3.Controls.Add(this.radioButton5);
-            this.groupBox3.Controls.Add(this.radioButton4);
-            this.groupBox3.Controls.Add(this.rbLayer);
-            this.groupBox3.Controls.Add(this.lb25);
-            this.groupBox3.Controls.Add(this.lb20);
-            this.groupBox3.Controls.Add(this.lb17);
-            this.groupBox3.Controls.Add(this.lb13);
-            this.groupBox3.Controls.Add(this.lb7);
-            this.groupBox3.Controls.Add(this.lb0);
-            this.groupBox3.Location = new System.Drawing.Point(3, 176);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(264, 138);
-            this.groupBox3.TabIndex = 7;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Слои";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(187, 16);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(61, 13);
+            this.label5.TabIndex = 26;
+            this.label5.Text = "Приоритет";
             // 
-            // lb0
+            // checkBox6
             // 
-            this.lb0.AutoSize = true;
-            this.lb0.Location = new System.Drawing.Point(6, 37);
-            this.lb0.Name = "lb0";
-            this.lb0.Size = new System.Drawing.Size(47, 13);
-            this.lb0.TabIndex = 0;
-            this.lb0.Text = "Слой 0  ";
+            this.checkBox6.AutoSize = true;
+            this.checkBox6.Location = new System.Drawing.Point(197, 117);
+            this.checkBox6.Name = "checkBox6";
+            this.checkBox6.Size = new System.Drawing.Size(15, 14);
+            this.checkBox6.TabIndex = 25;
+            this.checkBox6.Tag = "25";
+            this.checkBox6.UseVisualStyleBackColor = true;
+            this.checkBox6.CheckedChanged += new System.EventHandler(this.cbPriority_CheckedChanged);
             // 
-            // lb7
+            // checkBox7
             // 
-            this.lb7.AutoSize = true;
-            this.lb7.Location = new System.Drawing.Point(6, 54);
-            this.lb7.Name = "lb7";
-            this.lb7.Size = new System.Drawing.Size(47, 13);
-            this.lb7.TabIndex = 1;
-            this.lb7.Text = "Слой 7  ";
+            this.checkBox7.AutoSize = true;
+            this.checkBox7.Location = new System.Drawing.Point(197, 101);
+            this.checkBox7.Name = "checkBox7";
+            this.checkBox7.Size = new System.Drawing.Size(15, 14);
+            this.checkBox7.TabIndex = 24;
+            this.checkBox7.Tag = "20";
+            this.checkBox7.UseVisualStyleBackColor = true;
+            this.checkBox7.CheckedChanged += new System.EventHandler(this.cbPriority_CheckedChanged);
             // 
-            // lb13
+            // checkBox8
             // 
-            this.lb13.AutoSize = true;
-            this.lb13.Location = new System.Drawing.Point(6, 70);
-            this.lb13.Name = "lb13";
-            this.lb13.Size = new System.Drawing.Size(47, 13);
-            this.lb13.TabIndex = 2;
-            this.lb13.Text = "Слой 13";
+            this.checkBox8.AutoSize = true;
+            this.checkBox8.Location = new System.Drawing.Point(197, 86);
+            this.checkBox8.Name = "checkBox8";
+            this.checkBox8.Size = new System.Drawing.Size(15, 14);
+            this.checkBox8.TabIndex = 23;
+            this.checkBox8.Tag = "17";
+            this.checkBox8.UseVisualStyleBackColor = true;
+            this.checkBox8.CheckedChanged += new System.EventHandler(this.cbPriority_CheckedChanged);
             // 
-            // lb17
+            // checkBox9
             // 
-            this.lb17.AutoSize = true;
-            this.lb17.Location = new System.Drawing.Point(6, 86);
-            this.lb17.Name = "lb17";
-            this.lb17.Size = new System.Drawing.Size(47, 13);
-            this.lb17.TabIndex = 3;
-            this.lb17.Text = "Слой 17";
+            this.checkBox9.AutoSize = true;
+            this.checkBox9.Location = new System.Drawing.Point(197, 70);
+            this.checkBox9.Name = "checkBox9";
+            this.checkBox9.Size = new System.Drawing.Size(15, 14);
+            this.checkBox9.TabIndex = 22;
+            this.checkBox9.Tag = "13";
+            this.checkBox9.UseVisualStyleBackColor = true;
+            this.checkBox9.CheckedChanged += new System.EventHandler(this.cbPriority_CheckedChanged);
             // 
-            // lb20
+            // checkBox10
             // 
-            this.lb20.AutoSize = true;
-            this.lb20.Location = new System.Drawing.Point(6, 101);
-            this.lb20.Name = "lb20";
-            this.lb20.Size = new System.Drawing.Size(47, 13);
-            this.lb20.TabIndex = 4;
-            this.lb20.Text = "Слой 20";
+            this.checkBox10.AutoSize = true;
+            this.checkBox10.Location = new System.Drawing.Point(197, 53);
+            this.checkBox10.Name = "checkBox10";
+            this.checkBox10.Size = new System.Drawing.Size(15, 14);
+            this.checkBox10.TabIndex = 21;
+            this.checkBox10.Tag = "7";
+            this.checkBox10.UseVisualStyleBackColor = true;
+            this.checkBox10.CheckedChanged += new System.EventHandler(this.cbPriority_CheckedChanged);
             // 
-            // lb25
+            // cbPriority
             // 
-            this.lb25.AutoSize = true;
-            this.lb25.Location = new System.Drawing.Point(6, 118);
-            this.lb25.Name = "lb25";
-            this.lb25.Size = new System.Drawing.Size(47, 13);
-            this.lb25.TabIndex = 5;
-            this.lb25.Text = "Слой 25";
+            this.cbPriority.AutoSize = true;
+            this.cbPriority.Location = new System.Drawing.Point(197, 36);
+            this.cbPriority.Name = "cbPriority";
+            this.cbPriority.Size = new System.Drawing.Size(15, 14);
+            this.cbPriority.TabIndex = 20;
+            this.cbPriority.Tag = "0";
+            this.cbPriority.UseVisualStyleBackColor = true;
+            this.cbPriority.CheckedChanged += new System.EventHandler(this.cbPriority_CheckedChanged);
             // 
-            // rbLayer
+            // groupBox4
             // 
-            this.rbLayer.AutoSize = true;
-            this.rbLayer.Checked = true;
-            this.rbLayer.Location = new System.Drawing.Point(56, 37);
-            this.rbLayer.Name = "rbLayer";
-            this.rbLayer.Size = new System.Drawing.Size(14, 13);
-            this.rbLayer.TabIndex = 6;
-            this.rbLayer.TabStop = true;
-            this.rbLayer.Tag = "0";
-            this.rbLayer.UseVisualStyleBackColor = true;
-            this.rbLayer.CheckedChanged += new System.EventHandler(this.rbLayer_CheckedChanged);
+            this.groupBox4.Controls.Add(this.radioButton9);
+            this.groupBox4.Controls.Add(this.rbPriority);
+            this.groupBox4.Location = new System.Drawing.Point(4, 321);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(263, 68);
+            this.groupBox4.TabIndex = 9;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Тип поиска";
             // 
-            // radioButton4
+            // rbPriority
             // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(56, 54);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(14, 13);
-            this.radioButton4.TabIndex = 7;
-            this.radioButton4.Tag = "7";
-            this.radioButton4.UseVisualStyleBackColor = true;
-            this.radioButton4.CheckedChanged += new System.EventHandler(this.rbLayer_CheckedChanged);
+            this.rbPriority.AutoSize = true;
+            this.rbPriority.Checked = true;
+            this.rbPriority.Location = new System.Drawing.Point(8, 20);
+            this.rbPriority.Name = "rbPriority";
+            this.rbPriority.Size = new System.Drawing.Size(121, 17);
+            this.rbPriority.TabIndex = 0;
+            this.rbPriority.TabStop = true;
+            this.rbPriority.Tag = "0";
+            this.rbPriority.Text = "Оптимальный путь";
+            this.rbPriority.UseVisualStyleBackColor = true;
+            this.rbPriority.CheckedChanged += new System.EventHandler(this.rbPriority_CheckedChanged);
             // 
-            // radioButton5
+            // radioButton9
             // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(56, 70);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(14, 13);
-            this.radioButton5.TabIndex = 8;
-            this.radioButton5.Tag = "13";
-            this.radioButton5.UseVisualStyleBackColor = true;
-            this.radioButton5.CheckedChanged += new System.EventHandler(this.rbLayer_CheckedChanged);
-            // 
-            // radioButton6
-            // 
-            this.radioButton6.AutoSize = true;
-            this.radioButton6.Location = new System.Drawing.Point(56, 86);
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(14, 13);
-            this.radioButton6.TabIndex = 9;
-            this.radioButton6.Tag = "17";
-            this.radioButton6.UseVisualStyleBackColor = true;
-            this.radioButton6.CheckedChanged += new System.EventHandler(this.rbLayer_CheckedChanged);
-            // 
-            // radioButton7
-            // 
-            this.radioButton7.AutoSize = true;
-            this.radioButton7.Location = new System.Drawing.Point(56, 101);
-            this.radioButton7.Name = "radioButton7";
-            this.radioButton7.Size = new System.Drawing.Size(14, 13);
-            this.radioButton7.TabIndex = 10;
-            this.radioButton7.Tag = "20";
-            this.radioButton7.UseVisualStyleBackColor = true;
-            this.radioButton7.CheckedChanged += new System.EventHandler(this.rbLayer_CheckedChanged);
-            // 
-            // radioButton8
-            // 
-            this.radioButton8.AutoSize = true;
-            this.radioButton8.Location = new System.Drawing.Point(56, 118);
-            this.radioButton8.Name = "radioButton8";
-            this.radioButton8.Size = new System.Drawing.Size(14, 13);
-            this.radioButton8.TabIndex = 11;
-            this.radioButton8.Tag = "25";
-            this.radioButton8.UseVisualStyleBackColor = true;
-            this.radioButton8.CheckedChanged += new System.EventHandler(this.rbLayer_CheckedChanged);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(35, 16);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 13);
-            this.label3.TabIndex = 12;
-            this.label3.Text = "Текеущий";
-            // 
-            // cbWalkable
-            // 
-            this.cbWalkable.AutoSize = true;
-            this.cbWalkable.Location = new System.Drawing.Point(109, 36);
-            this.cbWalkable.Name = "cbWalkable";
-            this.cbWalkable.Size = new System.Drawing.Size(15, 14);
-            this.cbWalkable.TabIndex = 13;
-            this.cbWalkable.Tag = "0";
-            this.cbWalkable.UseVisualStyleBackColor = true;
-            this.cbWalkable.CheckedChanged += new System.EventHandler(this.cbWalkable_CheckedChanged);
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(109, 53);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(15, 14);
-            this.checkBox1.TabIndex = 14;
-            this.checkBox1.Tag = "7";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.cbWalkable_CheckedChanged);
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(109, 70);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(15, 14);
-            this.checkBox2.TabIndex = 15;
-            this.checkBox2.Tag = "13";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            this.checkBox2.CheckedChanged += new System.EventHandler(this.cbWalkable_CheckedChanged);
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(109, 86);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(15, 14);
-            this.checkBox3.TabIndex = 16;
-            this.checkBox3.Tag = "17";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            this.checkBox3.CheckedChanged += new System.EventHandler(this.cbWalkable_CheckedChanged);
-            // 
-            // checkBox4
-            // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(109, 101);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(15, 14);
-            this.checkBox4.TabIndex = 17;
-            this.checkBox4.Tag = "20";
-            this.checkBox4.UseVisualStyleBackColor = true;
-            this.checkBox4.CheckedChanged += new System.EventHandler(this.cbWalkable_CheckedChanged);
-            // 
-            // checkBox5
-            // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(109, 117);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(15, 14);
-            this.checkBox5.TabIndex = 18;
-            this.checkBox5.Tag = "25";
-            this.checkBox5.UseVisualStyleBackColor = true;
-            this.checkBox5.CheckedChanged += new System.EventHandler(this.cbWalkable_CheckedChanged);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(99, 16);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(58, 13);
-            this.label4.TabIndex = 19;
-            this.label4.Text = "Проходим";
-            // 
-            // btFind
-            // 
-            this.btFind.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btFind.Location = new System.Drawing.Point(88, 476);
-            this.btFind.Name = "btFind";
-            this.btFind.Size = new System.Drawing.Size(95, 48);
-            this.btFind.TabIndex = 8;
-            this.btFind.Text = "Найти путь";
-            this.btFind.UseVisualStyleBackColor = true;
-            this.btFind.Click += new System.EventHandler(this.btFind_Click);
+            this.radioButton9.AutoSize = true;
+            this.radioButton9.Location = new System.Drawing.Point(8, 43);
+            this.radioButton9.Name = "radioButton9";
+            this.radioButton9.Size = new System.Drawing.Size(111, 17);
+            this.radioButton9.TabIndex = 1;
+            this.radioButton9.Tag = "1";
+            this.radioButton9.Text = "Кратчайший путь";
+            this.radioButton9.UseVisualStyleBackColor = true;
+            this.radioButton9.CheckedChanged += new System.EventHandler(this.rbPriority_CheckedChanged);
             // 
             // pfGrid
             // 
@@ -483,14 +614,16 @@
             this.Name = "Form1";
             this.Text = "Поиск пути (в потоке GUI)";
             this.panel1.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbYsize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbXSize)).EndInit();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -533,6 +666,16 @@
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btFind;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.CheckBox checkBox6;
+        private System.Windows.Forms.CheckBox checkBox7;
+        private System.Windows.Forms.CheckBox checkBox8;
+        private System.Windows.Forms.CheckBox checkBox9;
+        private System.Windows.Forms.CheckBox checkBox10;
+        private System.Windows.Forms.CheckBox cbPriority;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.RadioButton radioButton9;
+        private System.Windows.Forms.RadioButton rbPriority;
     }
 }
 

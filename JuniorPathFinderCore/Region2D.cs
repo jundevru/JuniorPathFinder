@@ -47,7 +47,7 @@ namespace JuniorPathFinderCore
         /// <param name="to">End local point</param>
         /// <param name="comparer">Point comparer</param>
         /// <returns>Возвращает путь в глобальных координатах</returns>
-        public RegionPath GetPath(Vector2i from, Vector2i to, IRegion2DItemComparer comparer, IHeuristic2D heuristic, LayerMask walkable, LayersValues weights)
+        public RegionPath GetPath(Vector2i from, Vector2i to, IRegion2DItemComparer comparer, IHeuristic2D heuristic, LayerMask walkable, LayersValues weights, LayerMask priority)
         {
             RegionPath path = null;
             RegionItem start = GetItem(from);
@@ -62,7 +62,8 @@ namespace JuniorPathFinderCore
 
             byte closedvalue = IncrementCurrentIteration;
             sbyte[,] direction = new sbyte[8, 2] { { 0, -1 }, { 1, 0 }, { 0, 1 }, { -1, 0 }, { 1, -1 }, { 1, 1 }, { -1, 1 }, { -1, -1 } };
-            TreeQueue<RegionItem> opened = new TreeQueue<RegionItem>(comparer);
+            MyTreeQueue<RegionItem> opened = new MyTreeQueue<RegionItem>(comparer);
+            //TreeQueue<RegionItem> opened = new TreeQueue<RegionItem>(comparer);
             RegionItem parent = null;
 
             start.g = 0;
@@ -74,10 +75,10 @@ namespace JuniorPathFinderCore
             int ny;
 
             while (opened.Count > 0)
-            {
-                parent = opened.Pop();
-                parent.closed = closedvalue;
-                parent.opened = 0;   // ???
+            {                
+                parent = opened.Pop();          // Извлекаем очередной наименьший блок (на первом шаге это стартовый)
+                parent.closed = closedvalue;    // Отмечаем его как просмотренный ранее
+                parent.opened = 0;              // Изьять из списка кандидатов на просмотр
 
                 if (parent.LocalCoordinate.x == end.LocalCoordinate.x && parent.LocalCoordinate.y == end.LocalCoordinate.y)
                 {
@@ -85,7 +86,7 @@ namespace JuniorPathFinderCore
                     break;
                 }
 
-                for (int i = 0; i < 8; i++)
+                for (int i = 0; i < 8; i++)     // Просматриваем всех соседей
                 {
                     nx = parent.LocalCoordinate.x + direction[i, 0];
                     ny = parent.LocalCoordinate.y + direction[i, 1];
@@ -94,22 +95,23 @@ namespace JuniorPathFinderCore
                         continue;
                     RegionItem newnode = GetItem(new Vector2i(nx, ny));
 
-                    // Если поверхность не проходима
+                    // Если блок был просмотрен ранее или поверхность не проходима
                     if (newnode.closed == closedvalue || !walkable.Contains(newnode.Layer))
                         continue;
-                    // Базовый штраф поверхности
-                    int penalti = weights.GetValue(newnode.Layer);
-                    // Вычисляем пройденный путь
+                    // Получаем базовый штраф поверхности (если приоритетная поверхность, то штраф минимальный)
+                    int penalti = (priority.Contains(newnode.Layer)) ? weights.MinValue : weights.GetValue(newnode.Layer);
+                    // Вычисляем пройденный путь в штрафах до соседа
                     int g = parent.g + penalti ;
+                    // Если в списке кандидатов на просмотр и новый вес больше старого - пропускаем
                     if (newnode.opened == closedvalue && newnode.g <= g)
                         continue;
-
-                    // При расчете оптимального пути, считаем в общий путь еще и пройденный
+                    // Получаем оставшееся расстояние
                     double f = heuristic.GetHeuristic(new Vector2i(newnode.LocalCoordinate.x, newnode.LocalCoordinate.y), new Vector2i(end.LocalCoordinate.x, end.LocalCoordinate.y));
 
                     newnode.g = g;
                     newnode.f = f;
                     newnode.parent = parent;
+                    // Поместить в список кандидатов на просмотр
                     if (newnode.opened != closedvalue)
                     {
                         opened.Push(newnode);
